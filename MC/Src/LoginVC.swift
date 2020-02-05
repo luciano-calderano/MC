@@ -114,11 +114,6 @@ class LoginVC: UIViewController {
             vc.delegate = self
             present(vc, animated: true)
         }
-        
-//        let web = WebAppVC.Instance()
-//        web.page = url
-//        web.modalPresentationStyle = .overFullScreen
-//        present(web, animated: false, completion: nil)
     }
 }
 
@@ -130,7 +125,7 @@ extension LoginVC: SFSafariViewControllerDelegate {
         }
     }
 }
-//
+
 //MARK:- UITextFieldDelegate
 
 extension LoginVC: UITextFieldDelegate {

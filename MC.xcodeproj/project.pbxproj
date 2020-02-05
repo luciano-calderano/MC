@@ -9,12 +9,8 @@
 /* Begin PBXBuildFile section */
 		8B1DCADB23E07F090064F94B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B1DCADA23E07F090064F94B /* Assets.xcassets */; };
 		8B1DCADE23E07F090064F94B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B1DCADC23E07F090064F94B /* LaunchScreen.storyboard */; };
-		8B1DCAF123E08EC50064F94B /* WebAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1DCAEB23E08EC50064F94B /* WebAppVC.swift */; };
 		8B1DCAF223E08EC50064F94B /* WebApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B1DCAEC23E08EC50064F94B /* WebApp.storyboard */; };
 		8B1DCAF323E08EC50064F94B /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1DCAED23E08EC50064F94B /* LoginVC.swift */; };
-		8B1DCAF423E08EC50064F94B /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1DCAEE23E08EC50064F94B /* Upload.swift */; };
-		8B1DCAF523E08EC50064F94B /* SelectPic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1DCAEF23E08EC50064F94B /* SelectPic.swift */; };
-		8B1DCAF623E08EC50064F94B /* MyReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1DCAF023E08EC50064F94B /* MyReq.swift */; };
 		8B1DCAFD23E090590064F94B /* MYLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1DCAFA23E090590064F94B /* MYLanguage.swift */; };
 		8B1DCAFE23E090590064F94B /* MYButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1DCAFB23E090590064F94B /* MYButton.swift */; };
 		8B1DCAFF23E090590064F94B /* MYLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1DCAFC23E090590064F94B /* MYLabel.swift */; };
@@ -25,6 +21,7 @@
 		8B1DCB0A23E093710064F94B /* Lang.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8B1DCB0823E093710064F94B /* Lang.txt */; };
 		8B1DCB0D23E094DE0064F94B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1DCB0B23E094DE0064F94B /* AppDelegate.swift */; };
 		8B1DCB1023E094ED0064F94B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1DCB0E23E094ED0064F94B /* SceneDelegate.swift */; };
+		8BF1C14F23EB1DA100A174A5 /* MyReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF1C14E23EB1DA100A174A5 /* MyReq.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,12 +29,8 @@
 		8B1DCADA23E07F090064F94B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B1DCADD23E07F090064F94B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B1DCADF23E07F090064F94B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8B1DCAEB23E08EC50064F94B /* WebAppVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebAppVC.swift; sourceTree = "<group>"; };
 		8B1DCAEC23E08EC50064F94B /* WebApp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WebApp.storyboard; sourceTree = "<group>"; };
 		8B1DCAED23E08EC50064F94B /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
-		8B1DCAEE23E08EC50064F94B /* Upload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Upload.swift; sourceTree = "<group>"; };
-		8B1DCAEF23E08EC50064F94B /* SelectPic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPic.swift; sourceTree = "<group>"; };
-		8B1DCAF023E08EC50064F94B /* MyReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyReq.swift; sourceTree = "<group>"; };
 		8B1DCAFA23E090590064F94B /* MYLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MYLanguage.swift; sourceTree = "<group>"; };
 		8B1DCAFB23E090590064F94B /* MYButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MYButton.swift; sourceTree = "<group>"; };
 		8B1DCAFC23E090590064F94B /* MYLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MYLabel.swift; sourceTree = "<group>"; };
@@ -49,6 +42,7 @@
 		8B1DCB0C23E094DE0064F94B /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Base; path = Base.lproj/AppDelegate.swift; sourceTree = "<group>"; };
 		8B1DCB0F23E094ED0064F94B /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Base; path = Base.lproj/SceneDelegate.swift; sourceTree = "<group>"; };
 		8B23E21023E2E874006C2095 /* MC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MC.entitlements; sourceTree = "<group>"; };
+		8BF1C14E23EB1DA100A174A5 /* MyReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyReq.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,11 +92,8 @@
 			isa = PBXGroup;
 			children = (
 				8B1DCAEC23E08EC50064F94B /* WebApp.storyboard */,
-				8B1DCAEB23E08EC50064F94B /* WebAppVC.swift */,
 				8B1DCAED23E08EC50064F94B /* LoginVC.swift */,
-				8B1DCAEE23E08EC50064F94B /* Upload.swift */,
-				8B1DCAEF23E08EC50064F94B /* SelectPic.swift */,
-				8B1DCAF023E08EC50064F94B /* MyReq.swift */,
+				8BF1C14E23EB1DA100A174A5 /* MyReq.swift */,
 			);
 			name = Src;
 			path = MC/Src;
@@ -195,18 +186,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B1DCAF423E08EC50064F94B /* Upload.swift in Sources */,
+				8BF1C14F23EB1DA100A174A5 /* MyReq.swift in Sources */,
 				8B1DCAFE23E090590064F94B /* MYButton.swift in Sources */,
 				8B1DCAFF23E090590064F94B /* MYLabel.swift in Sources */,
 				8B1DCB0D23E094DE0064F94B /* AppDelegate.swift in Sources */,
-				8B1DCAF123E08EC50064F94B /* WebAppVC.swift in Sources */,
 				8B1DCB1023E094ED0064F94B /* SceneDelegate.swift in Sources */,
 				8B1DCAFD23E090590064F94B /* MYLanguage.swift in Sources */,
 				8B1DCB0323E091060064F94B /* Config.swift in Sources */,
 				8B1DCB0723E092730064F94B /* MYExt.String.swift in Sources */,
-				8B1DCAF623E08EC50064F94B /* MyReq.swift in Sources */,
 				8B1DCB0523E091DF0064F94B /* Loader.swift in Sources */,
-				8B1DCAF523E08EC50064F94B /* SelectPic.swift in Sources */,
 				8B1DCAF323E08EC50064F94B /* LoginVC.swift in Sources */,
 				8B1DCB0123E090700064F94B /* MYTextField.swift in Sources */,
 			);
