@@ -27,7 +27,7 @@ class MYTextField: UITextField {
         placeholder = placeholder?.toLang()
         spellCheckingType = .no
         autocorrectionType = .no
-        autocapitalizationType = (self.keyboardType == .default) ? .sentences : .none
+        autocapitalizationType = (keyboardType == .default) ? .sentences : .none
         backgroundColor = .white
     }
 }

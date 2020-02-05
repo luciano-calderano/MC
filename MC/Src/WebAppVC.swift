@@ -20,15 +20,13 @@ class WebAppVC: UIViewController {
     }
     
     var page = ""
-    private var webView = WKWebView()
+    @IBOutlet private weak var webView: WKWebView!
     private var uploadUrl: URL!
-    
-    @IBOutlet private var container: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        container.isUserInteractionEnabled = true
         webView.navigationDelegate = self
+        webView.uiDelegate = self
         let urlPage = page.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         let request = URLRequest(url: URL(string: urlPage!)!)
         webView.load(request)
@@ -51,9 +49,6 @@ extension WebAppVC: WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         Loader.stop()
-        
-        webView.frame = container.bounds
-        container.addSubview(webView)
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
@@ -91,6 +86,21 @@ extension WebAppVC: WKNavigationDelegate {
         print(challenge)
         completionHandler(.useCredential, nil)
     }
+}
+
+extension WebAppVC: WKUIDelegate {
+    func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
+        let ac = UIAlertController(title: "Hey, listen!", message: message, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(ac, animated: true)
+        completionHandler()
+    }
+//    func webView(_ webView: WKWebView,
+//     runOpenPanelWith parameters: WKOpenPanelParameters,
+//     initiatedByFrame frame: WKFrameInfo,
+//     completionHandler: @escaping ([URL]?) -> Void) {
+//
+//    }
 }
 
 extension WebAppVC {

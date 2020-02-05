@@ -12,7 +12,7 @@ class MYButtonGreen: MYButton {
 
     override func initialize() {
         super.initialize()
-        backgroundColor = UIColor(red: 173/255, green: 209/255, blue: 75/255, alpha: 1)
+        backgroundColor = Config.Color.green
         setTitleColor(.white, for: .normal)
     }
 }
@@ -33,7 +33,7 @@ class MYButton: UIButton {
 
     var title: String {
         get { return titleLabel!.text! }
-        set { self.setTitle(newValue.toLang(), for: UIControl.State()) }
+        set { setTitle(newValue.toLang(), for: UIControl.State()) }
     }
     
     required internal init?(coder aDecoder: NSCoder) {

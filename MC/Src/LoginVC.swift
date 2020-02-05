@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class LoginVC: UIViewController {
     @IBOutlet var containerView: UIView!
@@ -105,14 +106,31 @@ class LoginVC: UIViewController {
     }
     
     private func openWeb(_ url: String ) {
-        let web = WebAppVC.Instance()
-        web.page = url
-        web.modalPresentationStyle = .overFullScreen
-        present(web, animated: false, completion: nil)
-//        navigationController?.show(web, sender: self)
+        if let urlWeb = URL(string: url) {
+            let vc = SFSafariViewController(url: urlWeb)
+            vc.preferredBarTintColor = Config.Color.green
+            vc.preferredControlTintColor = .white
+            vc.dismissButtonStyle = .close
+            vc.delegate = self
+            present(vc, animated: true)
+        }
+        
+//        let web = WebAppVC.Instance()
+//        web.page = url
+//        web.modalPresentationStyle = .overFullScreen
+//        present(web, animated: false, completion: nil)
     }
 }
 
+extension LoginVC: SFSafariViewControllerDelegate {
+    func safariViewController(_ controller: SFSafariViewController, initialLoadDidRedirectTo URL: URL) {
+        if URL.lastPathComponent == "logout" {
+            dismiss(animated: true, completion: nil)
+            return
+        }
+    }
+}
+//
 //MARK:- UITextFieldDelegate
 
 extension LoginVC: UITextFieldDelegate {

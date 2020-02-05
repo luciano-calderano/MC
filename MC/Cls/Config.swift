@@ -23,25 +23,15 @@ struct AppConf {
 
 struct Config {
     static var tokenNotification = ""
-
+    struct Color {
+        static let green = UIColor(red: 173/255, green: 209/255, blue: 75/255, alpha: 1)
+    }
     struct Url {
         static let Shopper = "https://shopper.mebius.it"
         static let grant = AppConf.urlHome + "default/oauth/grant"
         static let Recover = AppConf.urlHome + "login/retrieve-password/app/1"
         static let Signup  = AppConf.urlHome + "login/register?app=1"
-
-//        static let get   = Config.Url.home + "default/rest/get"
     }
-//
-//    struct DateFmt {
-//        static let Ora           = "HH:mm"
-//        static let DataJson      = "yyyy-MM-dd"
-//        static let DataOraJson   = "yyyy-MM-dd HH:mm:ss"
-//        static let dataOutput    = "dd/MM/yyyy"
-//        static let dataOraOutput = "dd/MM/yyyy HH:mm"
-//
-//    }
-//    static let maxPicSize:CGFloat = 1200
 }
 
 extension UIViewController {
