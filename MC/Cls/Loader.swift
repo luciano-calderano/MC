@@ -14,7 +14,11 @@ public struct Loader {
         private func initialize() {
             addSubview(wait)
             frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-            wait.style = .large
+            if #available(iOS 13.0, *) {
+                wait.style = .large
+            } else {
+                wait.style = .whiteLarge
+            }
             wait.color = .white
             wait.center = center
         }

@@ -8,12 +8,17 @@
 
 import UIKit
 import UserNotifications
+import SafariServices
 
 @UIApplicationMain
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
+    var safariVC: SFSafariViewController!
     
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        return true
+    }
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         MYLang.setup(langListCodes: ["it"], langFileName: "Lang.txt")
@@ -22,10 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        print("application: ")
         print(url)
         return true
     }
-
+    
     func applicationWillEnterForeground(_ application: UIApplication) {
         UIApplication.shared.applicationIconBadgeNumber = 0
     }

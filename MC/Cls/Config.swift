@@ -15,22 +15,23 @@ func Lng(_ key: String) -> String {
     return MYLang.value(key)
 }
 
-struct AppConf {
-    static let urlHome  = "https://mysteryclient.mebius.it/"
-    static let client_id = "mystery_app"
-    static let client_secret = "UPqwU7vHXGtHk6JyXrA5"
-}
-
-struct Config {
+enum Config {
     static var tokenNotification = ""
-    struct Color {
+    static var tokenBearer = ""
+    enum Keys {
+        static let client_id = "mystery_app"
+        static let client_secret = "UPqwU7vHXGtHk6JyXrA5"
+    }
+    enum Color {
         static let green = UIColor(red: 173/255, green: 209/255, blue: 75/255, alpha: 1)
     }
-    struct Url {
+    enum Url {
+        static let Home  = "https://mysteryclient.mebius.it/"
         static let Shopper = "https://shopper.mebius.it"
-        static let grant = AppConf.urlHome + "default/oauth/grant"
-        static let Recover = AppConf.urlHome + "login/retrieve-password/app/1"
-        static let Signup  = AppConf.urlHome + "login/register?app=1"
+        static let grant = Url.Home + "default/oauth/grant"
+        static let put   = Url.Home + "default/rest/put"
+        static let Recover = Url.Home + "login/retrieve-password/app/1"
+        static let Signup  = Url.Home + "login/register?app=1"
     }
 }
 

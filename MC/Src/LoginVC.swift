@@ -25,7 +25,8 @@ class LoginVC: UIViewController {
     
     private let kUser = "kUser"
     private let kPass = "kPass"
-
+    
+    private var safariVC: SFSafariViewController!
     //MARK:-
     
     override func viewDidLoad() {
@@ -52,7 +53,7 @@ class LoginVC: UIViewController {
         updateCheckCredential()
 
         #if DEBUG
-//         userText.text = "utente_gen";   passText.text = "novella18"
+         userText.text = "utente_gen";   passText.text = "novella18"
         #endif
     }
     
@@ -72,8 +73,8 @@ class LoginVC: UIViewController {
         }
         view.endEditing(true)
         
-        getToken({ (token) in
-            self.logged(token: token)
+        getToken({
+            self.logged()
         })
     }
     
@@ -85,7 +86,7 @@ class LoginVC: UIViewController {
         openWeb(Config.Url.Recover)
     }
     
-    private func logged(token: String ) {
+    private func logged() {
         if saveCred {
             UserDefaults.standard.set(userText.text, forKey: kUser)
             UserDefaults.standard.set(passText.text, forKey: kPass)
@@ -94,8 +95,9 @@ class LoginVC: UIViewController {
             UserDefaults.standard.set("", forKey: kUser)
             UserDefaults.standard.set("", forKey: kPass)
         }
-        let url = Config.Url.Shopper + "?token=" + token
+        let url = Config.Url.Shopper + "?token=" + Config.tokenBearer
         openWeb(url)
+        sendTokenPush()
     }
 
     //MARK: - private
@@ -107,22 +109,29 @@ class LoginVC: UIViewController {
     
     private func openWeb(_ url: String ) {
         if let urlWeb = URL(string: url) {
-            let vc = SFSafariViewController(url: urlWeb)
-            vc.preferredBarTintColor = Config.Color.green
-            vc.preferredControlTintColor = .white
-            vc.dismissButtonStyle = .close
-            vc.delegate = self
-            present(vc, animated: true)
+            let delegate = UIApplication.shared.delegate as! AppDelegate
+            delegate.safariVC = SFSafariViewController(url: urlWeb)
+            delegate.safariVC.preferredBarTintColor = Config.Color.green
+            delegate.safariVC.preferredControlTintColor = .white
+            delegate.safariVC.dismissButtonStyle = .close
+            delegate.safariVC.delegate = self
+            
+            let w =  UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+            w?.rootViewController!.present(delegate.safariVC, animated: true, completion: nil)
         }
     }
 }
 
 extension LoginVC: SFSafariViewControllerDelegate {
     func safariViewController(_ controller: SFSafariViewController, initialLoadDidRedirectTo URL: URL) {
+        print(URL)
         if URL.lastPathComponent == "logout" {
             dismiss(animated: true, completion: nil)
-            return
         }
+    }
+    
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        print("finish")
     }
 }
 
@@ -130,25 +139,26 @@ extension LoginVC: SFSafariViewControllerDelegate {
 
 extension LoginVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == userText {
+        switch textField {
+        case userText:
             passText.becomeFirstResponder()
-            return true
-        }
-        if textField == passText {
+        case passText:
             view.endEditing(true)
+        default:
+            break
         }
         return true
     }
 }
 
 extension LoginVC {
-    func getToken(_ completion: @escaping (String) -> ()) {
+    func getToken(_ completion: @escaping () -> ()) {
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "?"
         
         let param = [
             "grant_type"    : "password",
-            "client_id"     : AppConf.client_id,
-            "client_secret" : AppConf.client_secret,
+            "client_id"     : Config.Keys.client_id,
+            "client_secret" : Config.Keys.client_secret,
             "version"       : "i" + version,
             "username"      : userText.text!,
             "password"      : passText.text!,
@@ -161,10 +171,31 @@ extension LoginVC {
             if response.success,
                 let tokenDict = response.jsonDict["token"] as? JsonDict,
                 let token = tokenDict["access_token"] as? String {
-                completion(token)
+                Config.tokenBearer = token
+                completion()
                 return
             }
             self.alert("Errore", message: response.errorDesc)
+        }
+    }
+    
+    private func sendTokenPush() {
+        let param = [
+            "object"    : "notification_token",
+            "object_id" : Config.tokenNotification
+        ]
+        
+        let req = MYReq(Config.Url.put)
+        req.params = param
+        req.type = .put
+        req.header = [
+            "Authorization" :  "Bearer \(Config.tokenBearer)"
+        ]
+        req.start { (response) in
+            print(response)
+            if response.success == false {
+                self.alert("Errore", message: response.errorDesc)
+            }
         }
     }
 }

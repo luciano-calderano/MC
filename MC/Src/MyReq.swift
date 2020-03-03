@@ -11,6 +11,7 @@ import Foundation
 class MYReq {
     enum MYReqType: String {
         case get  = "GET"
+        case put  = "PUT"
         case post = "POST"
     }
     var url: URL!
@@ -39,12 +40,15 @@ class MYReq {
         var request = URLRequest(url: url)
         request.httpMethod = type.rawValue
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        
+        for (key, value) in header {
+            request.setValue(value as? String, forHTTPHeaderField: key)
+        }
+
         switch type {
         case .get:
             let newUrl = url.absoluteString + "?" + jsonString
             request.url = URL(string: newUrl)
-        case .post:
+        case .put, .post:
             request.httpBody = jsonString.data(using: .utf8)!
         }
         
@@ -52,6 +56,7 @@ class MYReq {
             DispatchQueue.main.async {
                 Loader.stop()
                 var resp = Response()
+                resp.errorCode = (response as? HTTPURLResponse)?.statusCode ?? 0
                 if error != nil {
                     resp.errorDesc = error?.localizedDescription ?? "Generic error"
                     completion (resp)
@@ -71,7 +76,15 @@ class MYReq {
                             completion (resp)
                             return
                         }
-                        resp.errorDesc = json["message"] as? String ?? "Generic error"
+                        if let errroCode = json["code"] as? Int {
+                            resp.errorCode = errroCode
+                        }
+                        if let errorDesc = json["message"] as? String {
+                            resp.errorDesc = errorDesc
+                        }
+                        else {
+                            resp.errorDesc = "Generic error"
+                        }
                         completion (resp)
                     }
                 }

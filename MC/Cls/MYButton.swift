@@ -51,7 +51,6 @@ class MYButton: UIButton {
         if let lbl = titleLabel {
             lbl.font = UIFont.boldSystemFont(ofSize: lbl.font.pointSize)
         }
-        setTitleColor(.darkGray, for: .normal)
         title = currentTitle ?? ""
     }
 }
