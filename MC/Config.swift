@@ -11,9 +11,6 @@
 import UIKit
 
 typealias JsonDict = Dictionary<String, Any>
-func Lng(_ key: String) -> String {
-    return MYLang.value(key)
-}
 
 enum Config {
     static var tokenNotification = ""
@@ -21,6 +18,9 @@ enum Config {
     enum Keys {
         static let client_id = "mystery_app"
         static let client_secret = "UPqwU7vHXGtHk6JyXrA5"
+        static let kUser = "kUser"
+        static let kPass = "kPass"
+        static let kExpires = "kExpires"
     }
     enum Color {
         static let green = UIColor(red: 173/255, green: 209/255, blue: 75/255, alpha: 1)

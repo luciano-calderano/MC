@@ -2,40 +2,31 @@
 //  AppDelegate.swift
 //  MC
 //
-//  Created by Developer on 28/01/2020.
+//  Created by Developer on 06/03/2020.
 //  Copyright © 2020 Developer. All rights reserved.
 //
 
 import UIKit
 import UserNotifications
-import SafariServices
 
 @UIApplicationMain
-
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    var window: UIWindow?
-    var safariVC: SFSafariViewController!
-    
-    func application(_ application: UIApplication, willFinishLaunchingWithOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        return true
-    }
-    func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        MYLang.setup(langListCodes: ["it"], langFileName: "Lang.txt")
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         registerForPushNotifications()
         return true
     }
-    
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        print("application: ")
-        print(url)
-        return true
+
+    // MARK: UISceneSession Lifecycle
+
+    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
-    
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        UIApplication.shared.applicationIconBadgeNumber = 0
+
+    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
     }
 }
+
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
     private func registerForPushNotifications() {
@@ -88,4 +79,4 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         completionHandler()
     }
 }
-
+import UserNotifications

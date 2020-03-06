@@ -10,7 +10,7 @@ class MYLabel: UILabel {
             return text!
         }
         set {
-            text = newValue.toLang()
+            text = newValue
         }
     }
     required internal init?(coder aDecoder: NSCoder) {
