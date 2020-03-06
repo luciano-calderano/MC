@@ -33,12 +33,12 @@ class LoginUtil: NSObject {
         req.start { (response) in
             print(response)
             if response.success,
-                let tokenDict = response.jsonDict["token"] as? JsonDict,
-                let token = tokenDict["access_token"] as? String {
-                let expires_in = tokenDict["expires_in"]  as? Double
-                let date = Date().addingTimeInterval(expires_in ?? 0)
+                let r = response.value as? TokenModel,
+                let token = r.token?.access_token {
+                let expires_in = r.token?.expires_in ?? 0
+                let date = Date().addingTimeInterval(expires_in)
                 UserDefaults.standard.set(date, forKey: Config.Keys.kExpires)
-                Config.tokenBearer = token
+                Config.Token.bearer = token
                 completion(nil)
                 return
             }
@@ -46,7 +46,7 @@ class LoginUtil: NSObject {
         }
     }
         
-    func openWeb(_ url: String = Config.Url.Shopper + "?token=" + Config.tokenBearer) {
+    func openWeb(_ url: String = Config.Url.Shopper + "?token=" + Config.Token.bearer) {
         if let urlWeb = URL(string: url) {
             let scene = UIApplication.shared.connectedScenes.first
             if let sd = scene?.delegate as? SceneDelegate {

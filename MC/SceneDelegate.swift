@@ -23,6 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let d = UserDefaults.standard.object(forKey: Config.Keys.kExpires) as? Date, Date() > d {
             LoginUtil.getToken { (responseError) in
                 if responseError == nil {
+                    self.getRootVC()?.dismiss(animated: false, completion: nil)
                     LoginUtil().openWeb()
                 }
             }

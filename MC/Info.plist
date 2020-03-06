@@ -17,9 +17,21 @@
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>L'app vorrebbe usare la tua fotocamera per scattare le foto, ove richieste, da allegare all'incarico.</string>
+	<key>NSLocationAlwaysAndWhenInUsageDescription</key>
+	<string>La geo localizzazione è necessaria per poter verificare che l'incarico è stato svolto nel posto e nell'orario  corretti. L'uso della localizzazione è spiegato correttamente nella nostra informativa privacy</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>La geo localizzazione è necessaria per poter verificare che l'incarico è stato svolto nel posto e nell'orario  corretti. L'uso della localizzazione è spiegato correttamente nella nostra informativa privacy</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>La geo localizzazione è necessaria per poter verificare che l'incarico è stato svolto nel posto e nell'orario  corretti. L'uso della localizzazione è spiegato correttamente nella nostra informativa privacy</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>L'app vorrebbe usare il contenuto della galleria per permetterti di selezionare una foto.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>L'app vorrebbe usare il contenuto della galleria per permetterti di selezionare una foto.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -53,8 +65,6 @@
 	</array>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleLightContent</string>
-	<key>UIUserInterfaceStyle</key>
-	<string>Light</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -66,17 +76,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSCameraUsageDescription</key>
-	<string>L&apos;app vorrebbe usare la tua fotocamera per scattare le foto, ove richieste, da allegare all&apos;incarico.</string>
-	<key>NSLocationAlwaysAndWhenInUsageDescription</key>
-	<string>La geo localizzazione è necessaria per poter verificare che l&apos;incarico è stato svolto nel posto e nell&apos;orario  corretti. L&apos;uso della localizzazione è spiegato correttamente nella nostra informativa privacy</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>La geo localizzazione è necessaria per poter verificare che l&apos;incarico è stato svolto nel posto e nell&apos;orario  corretti. L&apos;uso della localizzazione è spiegato correttamente nella nostra informativa privacy</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>La geo localizzazione è necessaria per poter verificare che l&apos;incarico è stato svolto nel posto e nell&apos;orario  corretti. L&apos;uso della localizzazione è spiegato correttamente nella nostra informativa privacy</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>L&apos;app vorrebbe usare il contenuto della galleria per permetterti di selezionare una foto.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>L&apos;app vorrebbe usare il contenuto della galleria per permetterti di selezionare una foto.</string>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 </dict>
 </plist>

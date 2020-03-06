@@ -13,8 +13,10 @@ import UIKit
 typealias JsonDict = Dictionary<String, Any>
 
 enum Config {
-    static var tokenNotification = ""
-    static var tokenBearer = ""
+    enum Token {
+        static var notification = ""
+        static var bearer = ""
+    }
     enum Keys {
         static let client_id = "mystery_app"
         static let client_secret = "UPqwU7vHXGtHk6JyXrA5"
@@ -36,7 +38,6 @@ enum Config {
 }
 
 extension UIViewController {
-    
     func alert (_ title:String, message: String, cancelBlock:((UIAlertAction) -> Void)?, okBlock:((UIAlertAction) -> Void)?) {
         
         let alert = UIAlertController(title: title as String, message: message as String, preferredStyle: .alert)

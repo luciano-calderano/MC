@@ -130,14 +130,14 @@ extension LoginVC {
     private func sendTokenPush() {
         let param = [
             "object"    : "notification_token",
-            "object_id" : Config.tokenNotification
+            "object_id" : Config.Token.notification
         ]
         
         let req = MYReq(Config.Url.put)
         req.params = param
         req.type = .put
         req.header = [
-            "Authorization" :  "Bearer \(Config.tokenBearer)"
+            "Authorization" :  "Bearer \(Config.Token.bearer)"
         ]
         req.start { (response) in
             print(param, response)

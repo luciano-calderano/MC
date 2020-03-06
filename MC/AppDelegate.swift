@@ -59,24 +59,26 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         
         let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
-        Config.tokenNotification = tokenParts.joined()
-        print(Config.tokenNotification)
+        Config.Token.notification = tokenParts.joined()
+        print(Config.Token.notification)
     }
     
     func application(_ application: UIApplication,
                      didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("didFailToRegisterForRemoteNotificationsWithError: ", error)
     }
     
     func application(_ application: UIApplication,
                      didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler:
         @escaping (UIBackgroundFetchResult) -> Void) {
+        print("didReceiveRemoteNotification: ", userInfo)
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse,
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
         completionHandler()
+        print("didReceive: ", response)
     }
 }
-import UserNotifications
