@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct TokenModel: Codable {
+struct ResponseModel: Codable {
     struct Token: Codable {
         var access_token: String?
         var expires_in: Double?

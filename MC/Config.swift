@@ -28,12 +28,12 @@ enum Config {
         static let green = UIColor(red: 173/255, green: 209/255, blue: 75/255, alpha: 1)
     }
     enum Url {
+        static let Login = "https://shopper.mebius.it"
         static let Home  = "https://mysteryclient.mebius.it/"
-        static let Shopper = "https://shopper.mebius.it"
-        static let grant = Url.Home + "default/oauth/grant"
-        static let put   = Url.Home + "default/rest/put"
-        static let Recover = Url.Home + "login/retrieve-password/app/1"
-        static let Signup  = Url.Home + "login/register?app=1"
+        static let grant = Home + "default/oauth/grant"
+        static let put   = Home + "default/rest/put"
+        static let Recover = Login + "/login/retrieve-password/app"
+        static let Signup  = Login + "/login/register/app"
     }
 }
 

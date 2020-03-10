@@ -24,7 +24,8 @@ class MYReq {
     var type = MYReqType.post
     var header:JsonDict = [:]
     var params:JsonDict = [:]
-    
+    var responseType = ResponseModel.self
+
     struct Response {
         var success = false
         var errorCode = 0
@@ -37,7 +38,7 @@ class MYReq {
     }
 
     // MARK: - Start
-    
+
     func start(_ completion: @escaping (Response) -> ()) {
         Loader.start()
         let paramsArray: Array = params.compactMap({
@@ -77,46 +78,27 @@ class MYReq {
         task.resume()
     }
     
-    private func elaborate (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Response {
+    private func elaborate(_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Response {
         var resp = Response()
-        
         resp.errorCode = (response as? HTTPURLResponse)?.statusCode ?? 0
         if error != nil {
             resp.errorDesc = error?.localizedDescription ?? "Generic error"
             return resp
         }
-        if data == nil {
-            resp.errorDesc = "Missing data"
-            return resp
-        }
         if resp.errorCode != 200 {
-            resp.errorDesc = "Error: \(resp.errorCode)"
+            resp.errorDesc = HTTPURLResponse.localizedString(forStatusCode: resp.errorCode)
             return resp
         }
-        
-        guard let value = try? JSONDecoder().decode(TokenModel.self, from: data!) else {
-            resp.errorDesc = "Errore decodifica Json"
-            return resp
-        }
-        resp.value = value
-
-        guard let status = value.status else {
-            resp.errorDesc = "Errore Json: Status not found"
-            return resp
-        }
-
-        if status == "ok" {
+        if data == nil {
             resp.success = true
             return resp
         }
-
-        resp.errorDesc = "Generic response error"
-        if let errroCode = value.code {
-            resp.errorCode = errroCode
+        guard let value = try? JSONDecoder().decode(responseType, from: data!) else {
+            resp.errorDesc = "Errore decodifica Json"
+            return resp
         }
-        if let errorDesc = value.message {
-            resp.errorDesc = errorDesc
-        }
+        resp.success = true
+        resp.value = value
         return resp
     }
 }

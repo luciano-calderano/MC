@@ -20,7 +20,7 @@
 		8BD88C2D24125BE600599793 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD88C2924125BE600599793 /* LoginVC.swift */; };
 		8BD88C2E24125BE600599793 /* MyReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD88C2A24125BE600599793 /* MyReq.swift */; };
 		8BD88C2F24125BE600599793 /* LoginUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD88C2B24125BE600599793 /* LoginUtil.swift */; };
-		8BD88C5224128F3600599793 /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD88C5124128F3600599793 /* TokenModel.swift */; };
+		8BD88C5224128F3600599793 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD88C5124128F3600599793 /* ResponseModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +40,7 @@
 		8BD88C2A24125BE600599793 /* MyReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyReq.swift; sourceTree = "<group>"; };
 		8BD88C2B24125BE600599793 /* LoginUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginUtil.swift; sourceTree = "<group>"; };
 		8BD88C3024125C9F00599793 /* MC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MC.entitlements; sourceTree = "<group>"; };
-		8BD88C5124128F3600599793 /* TokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
+		8BD88C5124128F3600599793 /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +93,7 @@
 				8BD88C1E24125BB400599793 /* MYLabel.swift */,
 				8BD88C1F24125BB400599793 /* MYTextField.swift */,
 				8BD88C2024125BB400599793 /* MYButton.swift */,
-				8BD88C5124128F3600599793 /* TokenModel.swift */,
+				8BD88C5124128F3600599793 /* ResponseModel.swift */,
 			);
 			name = Cls;
 			path = MC/Cls;
@@ -183,7 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BD88C2E24125BE600599793 /* MyReq.swift in Sources */,
-				8BD88C5224128F3600599793 /* TokenModel.swift in Sources */,
+				8BD88C5224128F3600599793 /* ResponseModel.swift in Sources */,
 				8BD88C2D24125BE600599793 /* LoginVC.swift in Sources */,
 				8BD88C2624125BB400599793 /* MYButton.swift in Sources */,
 				8BD88C2224125BB400599793 /* Loader.swift in Sources */,
@@ -330,7 +330,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MC/MC.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 200306;
+				CURRENT_PROJECT_VERSION = 200310;
 				DEVELOPMENT_TEAM = K2DWY28S5B;
 				INFOPLIST_FILE = MC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -351,7 +351,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MC/MC.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 200306;
+				CURRENT_PROJECT_VERSION = 200310;
 				DEVELOPMENT_TEAM = K2DWY28S5B;
 				INFOPLIST_FILE = MC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
