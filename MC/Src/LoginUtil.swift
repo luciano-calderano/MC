@@ -9,9 +9,7 @@
 import UIKit
 
 class LoginUtil: NSObject {
-    class func getToken(_ completion: @escaping (String?) -> ()) {
-        let user = UserDefaults.standard.object(forKey: Config.Keys.kUser) as? String ?? ""
-        let pass = UserDefaults.standard.object(forKey: Config.Keys.kPass) as? String ?? ""
+    class func getToken(_ user:String, _ pass: String, _ completion: @escaping (String?) -> ()) {
         if user.isEmpty || pass.isEmpty {
             completion("")
             return
@@ -32,15 +30,17 @@ class LoginUtil: NSObject {
         req.params = param
         req.start { (response) in
             print(response)
-            if response.success,
-                let r = response.value as? ResponseModel,
-                let token = r.token?.access_token {
-                let expires_in = r.token?.expires_in ?? 0
-                let date = Date().addingTimeInterval(expires_in)
-                UserDefaults.standard.set(date, forKey: Config.Keys.kExpires)
-                Config.Token.bearer = token
-                completion(nil)
-                return
+            if response.success, let r = response.value as? ResponseModel {
+                if r.code == 200 {
+                    if let token = r.token?.access_token {
+                        let expires_in = r.token?.expires_in ?? 0
+                        let date = Date().addingTimeInterval(expires_in)
+                        UserDefaults.standard.set(date, forKey: Config.Keys.kExpires)
+                        Config.Token.bearer = token
+                        completion(nil)
+                        return
+                    }
+                }
             }
             completion(response.errorDesc)
         }

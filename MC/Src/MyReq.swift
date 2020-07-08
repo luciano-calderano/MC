@@ -85,10 +85,6 @@ class MYReq {
             resp.errorDesc = error?.localizedDescription ?? "Generic error"
             return resp
         }
-        if resp.errorCode != 200 {
-            resp.errorDesc = HTTPURLResponse.localizedString(forStatusCode: resp.errorCode)
-            return resp
-        }
         if data == nil {
             resp.success = true
             return resp
@@ -97,8 +93,18 @@ class MYReq {
             resp.errorDesc = "Errore decodifica Json"
             return resp
         }
-        resp.success = true
         resp.value = value
+        if resp.errorCode == 200 {
+            if let code = value.code {
+                resp.errorCode = code
+            }
+            if let message = value.message {
+                resp.errorDesc = message
+            }
+            resp.success = true
+            return resp
+        }
+        resp.errorDesc = HTTPURLResponse.localizedString(forStatusCode: resp.errorCode)
         return resp
     }
 }

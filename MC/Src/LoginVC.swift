@@ -70,7 +70,7 @@ class LoginVC: UIViewController {
         }
         view.endEditing(true)
         
-        LoginUtil.getToken { (responseError) in
+        LoginUtil.getToken(userText.text!, passText.text!,{ (responseError) in
             if let err = responseError {
                 if err.count > 0 {
                     self.alert("Errore", message: err)
@@ -78,7 +78,7 @@ class LoginVC: UIViewController {
                 return
             }
             self.logged()
-        }
+        })
     }
     
     @IBAction func signUpTapped () {

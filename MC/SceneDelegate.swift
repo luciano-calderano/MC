@@ -21,12 +21,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {
         UIApplication.shared.applicationIconBadgeNumber = 0
         if let d = UserDefaults.standard.object(forKey: Config.Keys.kExpires) as? Date, Date() > d {
-            LoginUtil.getToken { (responseError) in
+            let user = UserDefaults.standard.object(forKey: Config.Keys.kUser) as? String ?? ""
+            let pass = UserDefaults.standard.object(forKey: Config.Keys.kPass) as? String ?? ""
+
+            LoginUtil.getToken(user, pass, { (responseError) in
                 if responseError == nil {
                     self.getRootVC()?.dismiss(animated: false, completion: nil)
                     LoginUtil().openWeb()
                 }
-            }
+            })
         }
     }
 }
