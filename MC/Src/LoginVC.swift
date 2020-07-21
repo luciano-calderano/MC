@@ -28,6 +28,9 @@ class LoginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let press = UILongPressGestureRecognizer(target: self, action: #selector(versPressed))
+        versLabel.addGestureRecognizer(press)
+        versLabel.isUserInteractionEnabled = true;
         versLabel.text = "Vers.\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")"
         checkImg = saveCredButton.image(for: .normal)
         saveCredButton.imageEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
@@ -52,6 +55,11 @@ class LoginVC: UIViewController {
         #if DEBUG
          userText.text = "utente_gen";   passText.text = "novella18"
         #endif
+    }
+    
+    @objc func versPressed() {
+        self.alert("UIDD", message: Config.Token.notification)
+        UIPasteboard.general.string = Config.Token.notification
     }
     
     @IBAction func saveCredTapped () {

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>584400484483-cg48v6s9pmnfr27n7ipdncodp8vsv31b.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.584400484483-cg48v6s9pmnfr27n7ipdncodp8vsv31b</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>584400484483-tnmog25vj97bmuvi3l23d1oku32u7jut.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyA4kfDDeeYW_-07fIsm6fVVV9C_VQOErzE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>584400484483</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>it.mebius.Mystery.Client</string>
+	<key>PROJECT_ID</key>
+	<string>mysteryclient-e775b</string>
+	<key>STORAGE_BUCKET</key>
+	<string>mysteryclient-e775b.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:584400484483:ios:8b8b1dd0b12476b62143b6</string>
+	<key>DATABASE_URL</key>
+	<string>https://mysteryclient-e775b.firebaseio.com</string>
+</dict>
+</plist>
