@@ -48,9 +48,13 @@ class LoginUtil: NSObject {
         
     func openWeb(_ url: String = Config.Url.Login + "?token=" + Config.Token.bearer) {
         if let urlWeb = URL(string: url) {
-            let scene = UIApplication.shared.connectedScenes.first
-            if let sd = scene?.delegate as? SceneDelegate {
-                sd.openWeb(urlWeb)
+            if #available(iOS 13.0, *) {
+                let scene = UIApplication.shared.connectedScenes.first
+                if let sd = scene?.delegate as? SceneDelegate {
+                    sd.openWeb(urlWeb)
+                }
+            } else {
+                // Fallback on earlier versions
             }
         }
     }

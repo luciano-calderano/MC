@@ -23,7 +23,6 @@ class LoginVC: UIViewController {
     private var checkImg: UIImage?
     private var saveCred = false
     
-//    private var safariVC: SFSafariViewController!
     //MARK:-
     
     override func viewDidLoad() {
