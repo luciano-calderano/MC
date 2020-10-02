@@ -131,5 +131,3 @@ extension AppDelegate: MessagingDelegate {
         NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
     }
 }
-
-//https://shopper.mebius.it/learnings/171/video-mp4?token=MDViZjU4YjE1M2ViMzdlMzk2NWYyYjYwZTBjMWZh

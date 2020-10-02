@@ -26,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let user = UserDefaults.standard.object(forKey: Config.Keys.kUser) as? String ?? ""
             let pass = UserDefaults.standard.object(forKey: Config.Keys.kPass) as? String ?? ""
 
-            LoginUtil.getToken(user, pass, { (responseError) in
+            LoginUtil.loginWith(user, pass, { (responseError) in
                 if responseError == nil {
                     self.getRootVC()?.dismiss(animated: false, completion: nil)
                     LoginUtil().openWeb()

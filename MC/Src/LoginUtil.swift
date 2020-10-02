@@ -9,7 +9,7 @@
 import UIKit
 
 class LoginUtil: NSObject {
-    class func getToken(_ user:String, _ pass: String, _ completion: @escaping (String?) -> ()) {
+    class func loginWith(_ user:String, _ pass: String, _ completion: @escaping (String?) -> ()) {
         if user.isEmpty || pass.isEmpty {
             completion("")
             return
@@ -17,17 +17,22 @@ class LoginUtil: NSObject {
         
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "?"
         
+        let customAllowedSet = NSCharacterSet(charactersIn:"&=\"#%/<>?@\\^`{|}").inverted
+//        var escapedString = originalString.stringByAddingPercentEncodingWithAllowedCharacters(customAllowedSet)
+        
+        let passEscaped = pass.addingPercentEncoding(withAllowedCharacters: customAllowedSet)
+        
         let param = [
             "grant_type"    : "password",
             "client_id"     : Config.Keys.client_id,
             "client_secret" : Config.Keys.client_secret,
             "version"       : "i" + version,
             "username"      : user,
-            "password"      : pass,
+            "password"      : passEscaped ?? ""
         ]
         
         let req = MYReq(Config.Url.grant)
-        req.params = param
+        req.params = param as JsonDict
         req.start { (response) in
             print(response)
             if response.success, let r = response.value as? ResponseModel {

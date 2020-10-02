@@ -52,7 +52,7 @@ class LoginVC: UIViewController {
         updateCheckCredential()
 
         #if DEBUG
-         userText.text = "utente_gen";   passText.text = "novella18"
+         userText.text = "utente_gen";   passText.text = "nov&lla18"
         #endif
     }
     
@@ -77,7 +77,8 @@ class LoginVC: UIViewController {
         }
         view.endEditing(true)
         
-        LoginUtil.getToken(userText.text!, passText.text!,{ (responseError) in
+        LoginUtil.loginWith(userText.text!, passText.text!, {
+            (responseError) in
             if let err = responseError {
                 if err.count > 0 {
                     self.alert("Errore", message: err)
