@@ -408,6 +408,7 @@
 				CURRENT_PROJECT_VERSION = 201002;
 				DEVELOPMENT_TEAM = K2DWY28S5B;
 				INFOPLIST_FILE = MC/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -430,6 +431,7 @@
 				CURRENT_PROJECT_VERSION = 201002;
 				DEVELOPMENT_TEAM = K2DWY28S5B;
 				INFOPLIST_FILE = MC/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

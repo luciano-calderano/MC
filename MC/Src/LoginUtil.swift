@@ -16,12 +16,7 @@ class LoginUtil: NSObject {
         }
         
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "?"
-        
-        let customAllowedSet = NSCharacterSet(charactersIn:"&=\"#%/<>?@\\^`{|}").inverted
-//        var escapedString = originalString.stringByAddingPercentEncodingWithAllowedCharacters(customAllowedSet)
-        
-        let passEscaped = pass.addingPercentEncoding(withAllowedCharacters: customAllowedSet)
-        
+        let passEscaped = pass.addingPercentEncoding(withAllowedCharacters: .alphanumerics)
         let param = [
             "grant_type"    : "password",
             "client_id"     : Config.Keys.client_id,
