@@ -9,7 +9,6 @@
 import UIKit
 import UserNotifications
 import Firebase
-import FirebaseInstanceID
 import FirebaseMessaging
 
 @UIApplicationMain
@@ -77,14 +76,14 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     }
     
     private func FirebaseToken() {
-        InstanceID.instanceID().instanceID { (result, error) in
+        Messaging.messaging().token { token, error in
             if let error = error {
                 print("Error fetching remote instance ID: \(error)")
                 return
             }
-            if let result = result {
-                print("Remote instance ID token: \(result.token)")
-                Config.Token.notification = "Remote InstanceID token: \(result.token)"
+            if let token = token {
+                print("Remote instance ID token: \(token)")
+                Config.Token.notification = token
             }
         }
     }
