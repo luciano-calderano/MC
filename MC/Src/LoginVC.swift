@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 //import SafariServices
 
 class LoginVC: UIViewController {
@@ -22,7 +23,8 @@ class LoginVC: UIViewController {
 
     private var checkImg: UIImage?
     private var saveCred = false
-    
+    private var manager = CLLocationManager()
+
     //MARK:-
     
     override func viewDidLoad() {
@@ -40,6 +42,12 @@ class LoginVC: UIViewController {
         passView.layer.cornerRadius = passView.frame.size.height / 2
         
         saveCredButton.setImage(nil, for: .normal)
+        
+        manager = CLLocationManager()
+        manager.requestAlwaysAuthorization()
+        manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.startUpdatingLocation()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -153,5 +161,25 @@ extension LoginVC {
                 self.alert("Errore", message: response.errorDesc)
             }
         }
+    }
+}
+
+extension LoginVC: CLLocationManagerDelegate {
+    func locationManager(manager:CLLocationManager, didUpdateLocations locations:[AnyObject]) {
+        print("locations = \(locations)")
+    }
+    
+    private func locationManager(manager: CLLocationManager!,
+        didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+            switch status {
+            case CLAuthorizationStatus.restricted:
+                print("Restricted Access to location")
+            case CLAuthorizationStatus.denied:
+                print("User denied access to location")
+            case CLAuthorizationStatus.notDetermined:
+                print("Status not determined")
+            default:
+                print("Allowed to location Access")
+            }
     }
 }
